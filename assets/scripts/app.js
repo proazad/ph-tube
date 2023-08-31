@@ -11,11 +11,16 @@ const loadCategory = async () => {
   categories.forEach(category => {
     const btn = document.createElement("button");
     btn.classList = 'btn btn-md hover:text-black';
+    btn.setAttribute('id', category.category_id)
+    btn.setAttribute('onclick', "categoryId(this)")
     btn.innerText = category.category;
     categotyContainer.appendChild(btn);
   });
 }
-
+function categoryId(event) {
+  LoadData(event.id);
+  console.log(event.id);
+}
 /**
  * Display or Load All Data 
  */
@@ -29,16 +34,37 @@ const LoadData = async (id = '1000') => {
 const displayData = (videos) => {
   // Get Videos/Card Container 
   const cardContainer = document.getElementById('mainContentContainer');
+  cardContainer.innerHTML = '';
   /**
    * Print All Data 
    * Create Card
    */
   videos.forEach(video => {
     // Create Seconds To Hours and Minute
-    // const postTime = video?.others?.posted_date;
-    // const time = new Date(postTime);
-    // const hours = time.getHours();
-    // console.log(hours); 
+    const seconds = video?.others?.posted_date;
+    let postTime = '1 Minute ago';
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(months / 12);
+
+    if (minutes !== 0 && hours !== 0 && days !== 0 && months !== 0 && years !== 0) {
+      postTime = `${years} Years ${months} Months ${days} Days ${hours} Hours ${minutes} Minutes ago`;
+    }
+    else if (minutes !== 0 && hours !== 0 && days !== 0 && months !== 0) {
+      postTime = `${months} Months ${days} Days ${hours} Hours ${minutes} Minutes ago`;
+    }
+    else if (minutes !== 0 && hours !== 0 && days !== 0) {
+      postTime = `${days} Days ${hours} Hours ${minutes} Minutes ago`;
+    }
+    else if (minutes !== 0 && hours !== 0) {
+      postTime = `${hours} Hours ${minutes} Minutes ago`;
+    }
+    else if (minutes !== 0) {
+      postTime = `${minutes} Minutes ago`;
+    }
+
     //Create Card Div
     const card = document.createElement("div");
     //Add All Classes in the Card Div
@@ -90,8 +116,11 @@ const displayData = (videos) => {
   </div>`;
     cardContainer.appendChild(card);
   });
-  console.log(videos);
-
+  
 };
+
+
 loadCategory();
 LoadData();
+
+
