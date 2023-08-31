@@ -87,11 +87,30 @@
         class="flex justify-center items-center gap-4"
       ></section>
       <!-- Categroy Area Section End Here  -->
+      <!-- Loading Spinner Section Start Here  -->
+      <div id="loadingSpinner" class="text-center my-20 hidden">
+        <span class="loading loading-spinner loading-lg text-secondary"></span>
+      </div>
+      <!-- Loading Spinner Section End Here  -->
+      <!-- 404 Data Not Found Start Here -->
+      <section id="errorContainer" class="hidden">
+        <div
+          class="w-full lg:w-6/12 mx-auto flex flex-col items-center justify-center text-center py-24 gap-8"
+        >
+          <img src="./assets/image/Icon.png" alt="404" class="w-24" />
+          <p class="text-4xl font-bold">
+            Oops!! Sorry, There is no content here
+          </p>
+        </div>
+      </section>
+      <!-- 404 Data Not Found End Here -->
+
       <!-- Main Content Section Start Here  -->
       <section
         id="mainContentContainer"
         class="my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       ></section>
+
       <!-- Main Content Section End Here  -->
     </main>
     <!-- Main Content Area End Here -->

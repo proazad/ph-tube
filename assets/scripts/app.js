@@ -25,11 +25,17 @@ function categoryId(event) {
  * Display or Load All Data 
  */
 const LoadData = async (id = '1000') => {
+  loadingSpinner(true);
   const url = `https://openapi.programming-hero.com/api/videos/category/${id}`;
   const response = await fetch(url);
   const data = await response.json();
   const videos = data.data;
-  displayData(videos);
+  if(!Array.videos){
+    displayData(videos);
+  }else{
+    console.log(error, "Data Not Found");
+  }
+
 };
 const displayData = (videos) => {
   // Get Videos/Card Container 
@@ -116,10 +122,17 @@ const displayData = (videos) => {
   </div>`;
     cardContainer.appendChild(card);
   });
-  
+  loadingSpinner(false);
 };
 
-
+const loadingSpinner = (isLoaded) => {
+  const loadingSpinnerContainer = document.getElementById('loadingSpinner');
+  if (isLoaded) {
+    loadingSpinnerContainer.classList.remove('hidden');
+  } else {
+    loadingSpinnerContainer.classList.add('hidden');
+  }
+}
 loadCategory();
 LoadData();
 
