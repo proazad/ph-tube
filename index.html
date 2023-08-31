@@ -23,6 +23,10 @@
       * {
         font-family: "Inter", sans-serif;
       }
+      .custom-bg {
+        background-color: #ff1f3d;
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -67,14 +71,28 @@
           <span class="text-[#FF1F3D]">PH</span> Tube
         </h2>
         <button class="btn bg-slate-300">Sort by View</button>
-        <button class="btn bg-[#FF1F3D] text-white">Blog</button>
+        <button class="btn bg-[#FF1F3D] text-white hover:text-black">
+          Blog
+        </button>
       </nav>
       <!-- Nav Area End Here  -->
     </header>
     <!-- Header Area end Here  -->
 
     <!-- Main Content Area Start Here -->
-    <main></main>
+    <main class="container mx-auto px-4 md:px-0">
+      <!-- Categroy Area Section Start Here  -->
+      <section
+        id="categroyContainer"
+        class="flex justify-center items-center gap-4"
+      >
+        <button class="btn btn-md custom-bg hover:text-black">All</button>
+        <button class="btn btn-md hover:text-black">Music</button>
+        <button class="btn btn-md hover:text-black">Comedy</button>
+        <button class="btn btn-md hover:text-black">Drawing</button>
+      </section>
+      <!-- Categroy Area Section Start Here  -->
+    </main>
     <!-- Main Content Area End Here -->
     <script src="./assets/scripts/app.js"></script>
   </body>
