@@ -10,7 +10,7 @@ const loadCategory = async () => {
   const categotyContainer = document.getElementById('categroyContainer');
   categories.forEach(category => {
     const btn = document.createElement("button");
-    btn.classList = 'btn btn-xs sm:btn-sm md:btn-md custom-bg hover:text-black';
+    btn.classList = 'btn btn-xs sm:btn-sm md:btn-md hover:text-black';
     btn.setAttribute('id', category.category_id)
     btn.setAttribute('onclick', "categoryId(this)")
     btn.innerText = category.category;
@@ -23,23 +23,22 @@ const loadCategory = async () => {
  */
 const LoadData = async (id = '1000') => {
   loadingSpinner(true);
+
+
   const url = `https://openapi.programming-hero.com/api/videos/category/${id}`;
   const response = await fetch(url);
   const data = await response.json();
   const videos = data.data;
+  displayData(videos);
 
 
-  if (!Array.videos) {
-    displayData(videos);
-  } else {
-    console.log(error, "Data Not Found");
-  }
 
 };
 const displayData = (videos) => {
   // Get Videos/Card Container 
   const cardContainer = document.getElementById('mainContentContainer');
   cardContainer.innerHTML = '';
+
   /**
    * Calculate One Year's of Seconds
    * Calculate One Month's of Seconds
@@ -170,7 +169,9 @@ const loadingSpinner = (isLoaded) => {
  */
 function categoryId(event) {
   LoadData(event.id);
+
 }
+
 
 loadCategory();
 LoadData();
