@@ -85,8 +85,8 @@ const sortByViews = async () => {
       displayData(false);
     } else {
       videos.sort((a, b) => {
-        const viewsA = parseInt(a.others.views.replace(/[^\d.]/g, ''), 10);
-        const viewsB = parseInt(b.others.views.replace(/[^\d.]/g, ''), 10);
+        const viewsA = parseInt(a.others.views.slice(0,3), 10);
+        const viewsB = parseInt(b.others.views.slice(0,3), 10);
         return viewsB - viewsA;
       });
       displayData(videos);
