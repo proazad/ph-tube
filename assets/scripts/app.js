@@ -10,7 +10,7 @@ const loadCategory = async () => {
   const categotyContainer = document.getElementById('categroyContainer');
   categories.forEach(category => {
     const btn = document.createElement("button");
-    btn.classList = 'btn btn-md hover:text-black';
+    btn.classList = 'btn btn-xs sm:btn-sm md:btn-md hover:text-black';
     btn.setAttribute('id', category.category_id)
     btn.setAttribute('onclick', "categoryId(this)")
     btn.innerText = category.category;
@@ -30,9 +30,17 @@ const LoadData = async (id = '1000') => {
   const response = await fetch(url);
   const data = await response.json();
   const videos = data.data;
-  if(!Array.videos){
+
+  //  Sorting 
+  // console.log(videos)
+  const newVideos = videos.map(video => video.others.views);
+  // console.log(newVideos)
+  newVideos.sort();
+  // console.log(newVideos)
+
+  if (!Array.videos) {
     displayData(videos);
-  }else{
+  } else {
     console.log(error, "Data Not Found");
   }
 
@@ -45,32 +53,40 @@ const displayData = (videos) => {
    * Print All Data 
    * Create Card
    */
+  const OneYearSeconds = ((60 * 60) * 24) * 365;
+  const oneMonthSeconds = ((60 * 60) * 24) * 30;
+  const onedaySeconds = (60 * 60) * 24;
+
   videos.forEach(video => {
     // Create Seconds To Hours and Minute
     const seconds = video?.others?.posted_date;
-    let postTime = '1 Minute ago';
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-    const months = Math.floor(days / 30);
-    const years = Math.floor(months / 12);
+  
 
-    if (minutes !== 0 && hours !== 0 && days !== 0 && months !== 0 && years !== 0) {
-      postTime = `${years} Years ${months} Months ${days} Days ${hours} Hours ${minutes} Minutes ago`;
-    }
-    else if (minutes !== 0 && hours !== 0 && days !== 0 && months !== 0) {
-      postTime = `${months} Months ${days} Days ${hours} Hours ${minutes} Minutes ago`;
-    }
-    else if (minutes !== 0 && hours !== 0 && days !== 0) {
-      postTime = `${days} Days ${hours} Hours ${minutes} Minutes ago`;
-    }
-    else if (minutes !== 0 && hours !== 0) {
-      postTime = `${hours} Hours ${minutes} Minutes ago`;
-    }
-    else if (minutes !== 0) {
-      postTime = `${minutes} Minutes ago`;
-    }
+    const years = Math.floor(seconds / OneYearSeconds);
+    let tempSeconds = seconds - (years * OneYearSeconds);
 
+    const months = Math.floor(tempSeconds / oneMonthSeconds);
+    tempSeconds = tempSeconds - (months * oneMonthSeconds);
+
+    const days = Math.floor(tempSeconds / onedaySeconds);
+    tempSeconds = tempSeconds - (days * onedaySeconds);
+
+    const hours = Math.floor(tempSeconds / 3600);
+    tempSeconds = tempSeconds - (hours * 3600);
+
+    const minutes = Math.floor(tempSeconds / 60);
+    const year = years ? years+" Years " : '';
+    const month = months ? months+" months " : '';
+    const day = days ? days+" Days " : '';
+    const hour = hours ? hours+" hours " : '';
+    const minute =  minutes ?  minutes+"  minutes Ago" : '';
+
+    let postTime = year+""+month+""+day+""+hour+""+""+minute;
+    const postTimeElement = postTime ? `<span
+    class="absolute bottom-3 right-3 rounded-md bg-slate-800 text-white px-2 py-1 text-sm font-normal"
+    >${postTime}</span>` : '';
+
+    console.log(postTime);
     //Create Card Div
     const card = document.createElement("div");
     //Add All Classes in the Card Div
@@ -94,10 +110,7 @@ const displayData = (videos) => {
       alt="${video.title}"
       class="w-full h-56"
     />
-    <span
-      class="absolute bottom-3 right-3 rounded-md bg-slate-800 text-white px-2 py-1 text-sm font-normal"
-      >${postTime}</span
-    >
+    ${postTimeElement}
   </figure>
   <div class="card-body px-0 pt-5">
     <div class="flex gap-3">
@@ -125,6 +138,10 @@ const displayData = (videos) => {
   loadingSpinner(false);
 };
 
+/**
+ * 
+ * Loading Spinner 
+ */
 const loadingSpinner = (isLoaded) => {
   const loadingSpinnerContainer = document.getElementById('loadingSpinner');
   if (isLoaded) {
@@ -133,7 +150,44 @@ const loadingSpinner = (isLoaded) => {
     loadingSpinnerContainer.classList.add('hidden');
   }
 }
+/**
+ * Sorting Data by Views
+ */
+
+
 loadCategory();
 LoadData();
+
+
+function convertSeconds(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(months / 12);
+
+  let output = "";
+
+  if (seconds < 60) {
+    output = seconds + " seconds";
+  } else if (seconds < 3600) {
+    output = minutes + " minutes";
+  } else if (seconds < 86400) {
+    output = hours + " hours";
+  } else if (seconds < 2592000) {
+    output = days + " days";
+  } else if (seconds < 31536000) {
+    output = months + " months";
+  } else {
+    output = years + " years";
+  }
+
+  return output;
+}
+
+const seconds = 7260;
+const output = convertSeconds(seconds);
+
+// console.log(output);
 
 

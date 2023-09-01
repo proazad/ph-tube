@@ -36,7 +36,9 @@
       <nav
         class="container mx-auto flex flex-row justify-between items-center mb-8 px-4 md:px-0 border-b-[1px] border-gray-300 py-5"
       >
-        <h2 class="font-bold text-4xl flex items-center justify-center gap-2">
+        <h2
+          class="font-bold text-xl md:text-4xl flex items-center justify-center gap-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -70,8 +72,15 @@
           </svg>
           <span class="text-[#FF1F3D]">PH</span> Tube
         </h2>
-        <button class="btn bg-slate-300">Sort by View</button>
-        <button class="btn bg-[#FF1F3D] text-white hover:text-black">
+        <button
+          onclick="sortingData()"
+          class="btn btn-xs sm:btn-sm md:btn-md bg-slate-300"
+        >
+          Sort by View
+        </button>
+        <button
+          class="btn btn-xs sm:btn-sm md:btn-md bg-[#FF1F3D] text-white hover:text-black"
+        >
           Blog
         </button>
       </nav>
