@@ -11,6 +11,9 @@ const loadCategory = async () => {
   categories.forEach(category => {
     const btn = document.createElement("button");
     btn.classList = 'btn btn-xs sm:btn-sm md:btn-md hover:bg-[#ff1f3d] hover:text-white';
+    if (category.category_id === '1000') {
+      btn.classList.add('custom-bg');
+    }
     btn.setAttribute('id', category.category_id)
     btn.setAttribute('onclick', "categoryId(this)")
     btn.innerText = category.category;
@@ -56,14 +59,46 @@ const LoadData = async (id = '1000') => {
   }
 };
 
-const isClicked2 = () => {
-  function datapassSort(videos) {
-    videos.sort((a, b) => {
-      const viewsA = parseInt(a.others.views.replace(/[^\d.]/g, ''), 10);
-      const viewsB = parseInt(b.others.views.replace(/[^\d.]/g, ''), 10);
-      return viewsB - viewsA;
-    });
-    displayData(videos);
+/**
+ * Sort order Descending data By Views 
+ */
+const sortByViews = async () => {
+  const activeCategory = document.querySelector('.custom-bg');
+  const id = activeCategory.id;
+  loadingSpinner(true);
+  const url = `https://openapi.programming-hero.com/api/videos/category/${id}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+
+
+    const videos = data.data;
+
+    if (!videos || videos.length === 0) {
+      displayData(false);
+    } else {
+      videos.sort((a, b) => {
+        const viewsA = parseInt(a.others.views.replace(/[^\d.]/g, ''), 10);
+        const viewsB = parseInt(b.others.views.replace(/[^\d.]/g, ''), 10);
+        return viewsB - viewsA;
+      });
+      displayData(videos);
+
+    }
+  } catch (error) {
+    // Handle errors here
+    const errorElement = document.getElementById('errorContainer');
+    errorElement.classList.remove('hidden');
+    console.error("An error occurred:", error);
+  } finally {
+    loadingSpinner(false);
   }
 }
 
@@ -214,23 +249,22 @@ function categoryId(event) {
 }
 
 const activeBtn = (event) => {
-  console.log(event.id)
   if (event.id === '1000') {
     event.classList.add('custom-bg');
     document.getElementById('1001').classList.remove('custom-bg');
     document.getElementById('1003').classList.remove('custom-bg');
     document.getElementById('1005').classList.remove('custom-bg');
-  }else if(event.id === '1001'){
+  } else if (event.id === '1001') {
     event.classList.add('custom-bg');
     document.getElementById('1000').classList.remove('custom-bg');
     document.getElementById('1003').classList.remove('custom-bg');
     document.getElementById('1005').classList.remove('custom-bg');
-  }else if(event.id === '1003'){
+  } else if (event.id === '1003') {
     event.classList.add('custom-bg');
     document.getElementById('1000').classList.remove('custom-bg');
     document.getElementById('1001').classList.remove('custom-bg');
     document.getElementById('1005').classList.remove('custom-bg');
-  }else if(event.id === '1005'){
+  } else if (event.id === '1005') {
     event.classList.add('custom-bg');
     document.getElementById('1000').classList.remove('custom-bg');
     document.getElementById('1003').classList.remove('custom-bg');
