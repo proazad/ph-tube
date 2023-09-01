@@ -50,43 +50,67 @@ const displayData = (videos) => {
   const cardContainer = document.getElementById('mainContentContainer');
   cardContainer.innerHTML = '';
   /**
-   * Print All Data 
-   * Create Card
+   * Calculate One Year's of Seconds
+   * Calculate One Month's of Seconds
+   * Calculate One Day's of Seconds
    */
   const OneYearSeconds = ((60 * 60) * 24) * 365;
   const oneMonthSeconds = ((60 * 60) * 24) * 30;
   const onedaySeconds = (60 * 60) * 24;
 
-  videos.forEach(video => {
-    // Create Seconds To Hours and Minute
-    const seconds = video?.others?.posted_date;
-  
+  /**
+   * Print All Data 
+   * Create Card
+   */
 
+  videos.forEach(video => {
+
+    // Get Seconds from Every Post
+    const seconds = video?.others?.posted_date;
+
+    /**
+     * Seconds to Years Convert and calculate Additional Seconds 
+     */
     const years = Math.floor(seconds / OneYearSeconds);
     let tempSeconds = seconds - (years * OneYearSeconds);
-
+    /**
+     * After get Years then Additional Seconds to Months Convert and calculate Additional Seconds
+     */
     const months = Math.floor(tempSeconds / oneMonthSeconds);
     tempSeconds = tempSeconds - (months * oneMonthSeconds);
-
+    /**
+     * After get Months then Additional Seconds to Days Convert and Calculate Additional Seconds
+     */
     const days = Math.floor(tempSeconds / onedaySeconds);
     tempSeconds = tempSeconds - (days * onedaySeconds);
-
+    /**
+     * After get Days then Additional Secondas to Hours Convert and Calculate Additoional Seconds 
+     */
     const hours = Math.floor(tempSeconds / 3600);
     tempSeconds = tempSeconds - (hours * 3600);
-
+    /**
+     * After Get Hours then Additional Seconds to Minutes convet
+     */
     const minutes = Math.floor(tempSeconds / 60);
-    const year = years ? years+" Years " : '';
-    const month = months ? months+" months " : '';
-    const day = days ? days+" Days " : '';
-    const hour = hours ? hours+" hours " : '';
-    const minute =  minutes ?  minutes+"  minutes Ago" : '';
-
-    let postTime = year+""+month+""+day+""+hour+""+""+minute;
+    /**
+     * Here conditionly Check years, Months, Days, Hours and Minutes is not empty
+     * and Finaly Its get in New Variabls 
+     */
+    const year = years ? years + " Years " : '';
+    const month = months ? months + " months " : '';
+    const day = days ? days + " Days " : '';
+    const hour = hours ? hours + " hours " : '';
+    const minute = minutes ? minutes + "  minutes Ago" : '';
+/**
+ * Here Check post time is Available or not 
+ * if post time is less than 1 minute then post time initialize by empty value
+ * if post time is grater than 1min then post time container element inject 
+ */
+    let postTime = year + "" + month + "" + day + "" + hour + "" + "" + minute;
     const postTimeElement = postTime ? `<span
     class="absolute bottom-3 right-3 rounded-md bg-slate-800 text-white px-2 py-1 text-sm font-normal"
     >${postTime}</span>` : '';
 
-    console.log(postTime);
     //Create Card Div
     const card = document.createElement("div");
     //Add All Classes in the Card Div
