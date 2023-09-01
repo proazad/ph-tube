@@ -72,17 +72,12 @@
           </svg>
           <span class="text-[#FF1F3D]">PH</span> Tube
         </h2>
-        <button
-          onclick="sortingData()"
-          class="btn btn-xs sm:btn-sm md:btn-md bg-slate-300"
-        >
-          Sort by View
-        </button>
+
         <button
           onclick="blogPage()"
           class="btn btn-xs sm:btn-sm md:btn-md bg-[#FF1F3D] text-white hover:text-black"
         >
-          Blog
+          Home
         </button>
       </nav>
       <!-- Nav Area End Here  -->
@@ -91,40 +86,73 @@
 
     <!-- Main Content Area Start Here -->
     <main class="container mx-auto px-4 md:px-0">
-      <!-- Categroy Area Section Start Here  -->
-      <section
-        id="categroyContainer"
-        class="flex justify-center items-center gap-4"
-      ></section>
-      <!-- Categroy Area Section End Here  -->
-      <!-- Loading Spinner Section Start Here  -->
-      <div id="loadingSpinner" class="text-center my-20 hidden">
-        <span class="loading loading-spinner loading-lg text-secondary"></span>
-      </div>
-      <!-- Loading Spinner Section End Here  -->
-      <!-- 404 Data Not Found Start Here -->
-      <section id="errorContainer" class="hidden">
-        <div
-          class="w-full lg:w-6/12 mx-auto flex flex-col items-center justify-center text-center py-24 gap-8"
-        >
-          <img src="./assets/image/Icon.png" alt="404" class="w-24" />
-          <p class="text-4xl font-bold">
-            Oops!! Sorry, There is no content here
-          </p>
-        </div>
-      </section>
-      <!-- 404 Data Not Found End Here -->
-
-      <!-- Main Content Section Start Here  -->
-      <section
-        id="mainContentContainer"
-        class="my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-      ></section>
-
       <!-- Main Content Section End Here  -->
+      <section class="grid grid-cols-1">
+        <article>
+          <h2 class="text-3xl font-bold">
+            What is i know about JavaScript Variable (var, let, Const)
+          </h2>
+          <div id="author" class="mt-4">
+            <div class="flex gap-4">
+              <div>
+                <div class="avatar">
+                  <div class="w-16 rounded-full">
+                    <img src="./assets/image/azad.jpg" alt="Azad Hossain" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <h2 class="text-xl font-semibold">Azad Hossain</h2>
+                <p class="text-gray-600">
+                  <span class="font-medium">Location :</span>
+                  <span>Bangladesh</span>, <span>Profession: </span>
+                  <span>Web Developer</span>
+                </p>
+                <p class="text-gray-600">
+                  <span class="font-medium">Published :</span>
+                  <span>4 hours 34 Minutes Ago</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="my-4 space-y-4">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+              assumenda tempore cum illo aliquam sint numquam eligendi odit
+              inventore est, dignissimos exercitationem facilis nemo repellat
+              quaerat! Odio quisquam quo totam.
+            </p>
+            <h3 class="text-xl">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+              molestiae officiis iste quae! Debitis totam aut, accusantium
+              labore praesentium cumque nihil vel corrupti dolor vitae saepe
+              soluta iure cupiditate nesciunt eligendi! Quia iste quos inventore
+              cum dolorum, deserunt rerum hic ab! Quos autem suscipit incidunt.
+            </p>
+            <h3 class="text-xl">Lorem ipsum dolor sit amet consectetur.</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+              dolore fugiat, quia necessitatibus sapiente qui. Odit blanditiis
+              eos ipsam ex error, incidunt magni commodi eum nisi maxime vel
+              sequi provident modi assumenda placeat porro sint facere ea
+              suscipit dignissimos, nostrum atque velit, soluta perferendis?
+              Numquam ratione quos, sapiente possimus ducimus quidem id quis
+              tenetur optio? Rerum, quam tenetur expedita totam praesentium,
+              incidunt quaerat debitis quidem impedit nobis consectetur nihil
+              dolorum autem dicta omnis. Rerum repellat veniam atque reiciendis
+              maiores rem. Sed rem, non aliquid, dolore, molestias excepturi
+              deleniti minima provident laudantium nesciunt veniam. Reiciendis
+              iure facere amet, autem distinctio alias.
+            </p>
+          </div>
+        </article>
+      </section>
     </main>
     <!-- Main Content Area End Here -->
-    <script src="./assets/scripts/app.js"></script>
     <script src="./assets/scripts/blog.js"></script>
   </body>
 </html>

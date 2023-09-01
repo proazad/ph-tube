@@ -10,17 +10,14 @@ const loadCategory = async () => {
   const categotyContainer = document.getElementById('categroyContainer');
   categories.forEach(category => {
     const btn = document.createElement("button");
-    btn.classList = 'btn btn-xs sm:btn-sm md:btn-md hover:text-black';
+    btn.classList = 'btn btn-xs sm:btn-sm md:btn-md custom-bg hover:text-black';
     btn.setAttribute('id', category.category_id)
     btn.setAttribute('onclick', "categoryId(this)")
     btn.innerText = category.category;
     categotyContainer.appendChild(btn);
   });
 }
-function categoryId(event) {
-  LoadData(event.id);
-  console.log(event.id);
-}
+
 /**
  * Display or Load All Data 
  */
@@ -31,12 +28,6 @@ const LoadData = async (id = '1000') => {
   const data = await response.json();
   const videos = data.data;
 
-  //  Sorting 
-  // console.log(videos)
-  const newVideos = videos.map(video => video.others.views);
-  // console.log(newVideos)
-  newVideos.sort();
-  // console.log(newVideos)
 
   if (!Array.videos) {
     displayData(videos);
@@ -64,7 +55,6 @@ const displayData = (videos) => {
    */
 
   videos.forEach(video => {
-
     // Get Seconds from Every Post
     const seconds = video?.others?.posted_date;
 
@@ -96,17 +86,18 @@ const displayData = (videos) => {
      * Here conditionly Check years, Months, Days, Hours and Minutes is not empty
      * and Finaly Its get in New Variabls 
      */
-    const year = years ? years + " Years " : '';
-    const month = months ? months + " months " : '';
-    const day = days ? days + " Days " : '';
+    // const year = years ? years + " Years " : '';
+    // const month = months ? months + " months " : '';
+    // const day = days ? days + " Days " : '';
     const hour = hours ? hours + " hours " : '';
     const minute = minutes ? minutes + "  minutes Ago" : '';
-/**
- * Here Check post time is Available or not 
- * if post time is less than 1 minute then post time initialize by empty value
- * if post time is grater than 1min then post time container element inject 
- */
-    let postTime = year + "" + month + "" + day + "" + hour + "" + "" + minute;
+    /**
+     * Here Check post time is Available or not 
+     * if post time is less than 1 minute then post time initialize by empty value
+     * if post time is grater than 1min then post time container element inject 
+     */
+    // let postTime = year + "" + month + "" + day + "" + hour + "" + "" + minute;
+    let postTime = hour + "" + "" + minute;
     const postTimeElement = postTime ? `<span
     class="absolute bottom-3 right-3 rounded-md bg-slate-800 text-white px-2 py-1 text-sm font-normal"
     >${postTime}</span>` : '';
@@ -175,43 +166,13 @@ const loadingSpinner = (isLoaded) => {
   }
 }
 /**
- * Sorting Data by Views
+ * Get Category Id
  */
-
+function categoryId(event) {
+  LoadData(event.id);
+}
 
 loadCategory();
 LoadData();
-
-
-function convertSeconds(seconds) {
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-  const months = Math.floor(days / 30);
-  const years = Math.floor(months / 12);
-
-  let output = "";
-
-  if (seconds < 60) {
-    output = seconds + " seconds";
-  } else if (seconds < 3600) {
-    output = minutes + " minutes";
-  } else if (seconds < 86400) {
-    output = hours + " hours";
-  } else if (seconds < 2592000) {
-    output = days + " days";
-  } else if (seconds < 31536000) {
-    output = months + " months";
-  } else {
-    output = years + " years";
-  }
-
-  return output;
-}
-
-const seconds = 7260;
-const output = convertSeconds(seconds);
-
-// console.log(output);
 
 
