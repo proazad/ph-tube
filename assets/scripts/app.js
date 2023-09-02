@@ -183,7 +183,7 @@ const displayData = (videos) => {
       </defs>
     </svg>` : " ";
       //Create Card Div Inner HTML Element 
-      card.innerHTML = `<figure class="relative">
+      card.innerHTML = `<figure class="relative rounded-md">
       <img
         src="${video.thumbnail}"
         alt="${video.title}"
