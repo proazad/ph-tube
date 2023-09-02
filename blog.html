@@ -88,7 +88,7 @@
       <!-- Main Content Section End Here  -->
       <section class="flex flex-col lg:flex-row gap-10 py-10">
         <section class="grid grid-cols-1 flex-1">
-          <article class="">
+          <article class="mb-16">
             <h2 class="text-3xl font-bold">
               Discuss the scope of var, let, and const
             </h2>
@@ -106,7 +106,8 @@
                   <h2 class="text-xl font-semibold">Azad Hossain</h2>
                   <p class="text-gray-600">
                     <span class="font-medium">Location :</span>
-                    <span>Bangladesh</span>, <span>Profession: </span>
+                    <span>Bangladesh</span>,
+                    <span class="font-medium">Profession: </span>
                     <span>Web Developer</span>
                   </p>
                   <p class="text-gray-600">
@@ -117,70 +118,86 @@
               </div>
             </div>
             <div class="my-4 space-y-4">
-              <h2 class="text-2xl">First of all What is Variable ?</h2>
               <p>
                 Variable is like a bucket. Suppose you have a bucket. If you
                 want you can store anything in this bucket. JavaScript Variable
                 is same as bucket. You can store any type of Data in the
                 Variable. <br />
                 <br />
-                You can declare a variable 3 deffrent way in the JavaScript
+                You can declare a variable 3 deffrent way in the JavaScript. In
+                JavaScript, 'var', 'let', 'const' are used to declare variables,
+                but they have different scopes and behaviors. Let's discuss the
+                scope of JavaScrit each variable:
                 <br />
-                1. <a href="@var">var</a> <br />
-                2. <a href="@let">let</a> <br />
-                3. <a href="@const">const</a>
-                Maybe you have question why 3 name of word . What is the
-                deference between var, let, const .
+                1. <a href="#var" class="text-blue-600 font-bold">var</a> <br />
+                2. <a href="#let" class="text-blue-600 font-bold">let</a> <br />
+                3. <a href="#const" class="text-blue-600 font-bold">const</a>
+                <br />
               </p>
-              <p id="var">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Excepturi asperiores est quas molestiae velit accusamus eius.
-                Tempore maxime culpa omnis ratione, excepturi, quisquam dolorem
-                consequatur eum nam suscipit numquam eaque ipsum velit quas
-                voluptates doloremque nostrum? Ratione doloribus est voluptatum,
-                necessitatibus provident consectetur quae numquam! Recusandae
-                ducimus quis eligendi est deserunt consequuntur suscipit soluta.
-                Enim dolore esse quo laudantium, similique, minus amet dolorum
-                labore, consectetur atque accusamus asperiores eveniet saepe ea
-                sint quas provident tempora? Unde nostrum velit rerum aperiam
-                odio quas excepturi. Quos, voluptatem. Beatae ex molestiae vel,
-                est voluptatum illo quibusdam, ratione fugit provident ipsum
-                laborum quis culpa.
-              </p>
-              <h3 class="text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </h3>
+              <h3 class="text-2xl" id="var">var:</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Delectus molestiae officiis iste quae! Debitis totam aut,
-                accusantium labore praesentium cumque nihil vel corrupti dolor
-                vitae saepe soluta iure cupiditate nesciunt eligendi! Quia iste
-                quos inventore cum dolorum, deserunt rerum hic ab! Quos autem
-                suscipit incidunt.
+                <span class="font-bold">@1 Funciton Scoped :</span>
+                Variables declared with var are function-scoped. This means they
+                are only accessible within the function in which they are
+                declared or globally if declared outside of any function.
               </p>
-              <h3 class="text-xl">Lorem ipsum dolor sit amet consectetur.</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Pariatur dolore fugiat, quia necessitatibus sapiente qui. Odit
-                blanditiis eos ipsam ex error, incidunt magni commodi eum nisi
-                maxime vel sequi provident modi assumenda placeat porro sint
-                facere ea suscipit dignissimos, nostrum atque velit, soluta
-                perferendis? Numquam ratione quos, sapiente possimus ducimus
-                quidem id quis tenetur optio? Rerum, quam tenetur expedita totam
-                praesentium, incidunt quaerat debitis quidem impedit nobis
-                consectetur nihil dolorum autem dicta omnis. Rerum repellat
-                veniam atque reiciendis maiores rem. Sed rem, non aliquid,
-                dolore, molestias excepturi deleniti minima provident laudantium
-                nesciunt veniam. Reiciendis iure facere amet, autem distinctio
-                alias.
+                <span class="font-bold">@2 Hoisting: </span>
+                Variables declared with var are hoisted to the top of their
+                containing function or the global scope. This means that you can
+                access and use a var variable before it's declared, although its
+                value will be undefined
+              </p>
+              <p>
+                <span class="font-bold">@3 Re-declaration:</span>
+                Variables declared with var are hoisted to the top of their
+                containing function or the global scope. This means that you can
+                access and use a var variable before it's declared, although its
+                value will be undefined
+              </p>
+              <h3 class="text-2xl" id="let">let:</h3>
+              <p>
+                <span class="font-bold">@1 Funciton Scoped :</span>
+                Variables declared with let are block-scoped. This means they
+                are accessible only within the block (enclosed by curly braces)
+                in which they are declared, including loops, conditional
+                statements, and functions.
+              </p>
+              <p>
+                <span class="font-bold">@2 Hoisting: </span>
+                Like var, let variables are hoisted, but they are not
+                initialized with a value. Accessing a let variable before its
+                declaration will result in a ReferenceError.
+              </p>
+              <p>
+                <span class="font-bold">@3 No Re-declaration:</span>
+                You cannot re-declare a variable with let within the same scope.
+              </p>
+              <h3 class="text-2xl" id="const">Const:</h3>
+              <p>
+                <span class="font-bold">@1 Funciton Scoped :</span>
+                Like let, const variables are block-scoped and can only be
+                accessed within the block in which they are declared.
+              </p>
+              <p>
+                <span class="font-bold">@2 Hoisting: </span>
+                const variables are also hoisted but not initialized with a
+                value. Trying to access a const variable before its declaration
+                will result in a ReferenceError.
+              </p>
+              <p>
+                <span class="font-bold">@3 No Re-declaration:</span>
+                const variables cannot be reassigned after their initial
+                assignment. However, for objects and arrays declared with const,
+                their properties or elements can still be modified.
               </p>
             </div>
           </article>
 
           <!-- Second article  -->
-          <article class="">
+          <article class="mb-16">
             <h2 class="text-3xl font-bold">
-              What is i know about JavaScript Variable (var, let, Const)
+              Tell us the use cases of null and undefined.
             </h2>
             <div id="author" class="mt-4">
               <div class="flex gap-4">
@@ -208,46 +225,56 @@
             </div>
             <div class="my-4 space-y-4">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-                assumenda tempore cum illo aliquam sint numquam eligendi odit
-                inventore est, dignissimos exercitationem facilis nemo repellat
-                quaerat! Odio quisquam quo totam.
+                In JavaScript, null and undefined are two distinct values that
+                are often used in different situations. Here are their common
+                use cases:
               </p>
-              <h3 class="text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </h3>
+              <h3 class="text-xl">null</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Delectus molestiae officiis iste quae! Debitis totam aut,
-                accusantium labore praesentium cumque nihil vel corrupti dolor
-                vitae saepe soluta iure cupiditate nesciunt eligendi! Quia iste
-                quos inventore cum dolorum, deserunt rerum hic ab! Quos autem
-                suscipit incidunt.
+                <span class="text-bold">Intentional Absence of Value :</span>
+                null is used to represent the intentional absence of any object
+                value or the lack of a value. It's often assigned to variables
+                or properties when you want to explicitly indicate that there is
+                no meaningful value present.
               </p>
-              <h3 class="text-xl">Lorem ipsum dolor sit amet consectetur.</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Pariatur dolore fugiat, quia necessitatibus sapiente qui. Odit
-                blanditiis eos ipsam ex error, incidunt magni commodi eum nisi
-                maxime vel sequi provident modi assumenda placeat porro sint
-                facere ea suscipit dignissimos, nostrum atque velit, soluta
-                perferendis? Numquam ratione quos, sapiente possimus ducimus
-                quidem id quis tenetur optio? Rerum, quam tenetur expedita totam
-                praesentium, incidunt quaerat debitis quidem impedit nobis
-                consectetur nihil dolorum autem dicta omnis. Rerum repellat
-                veniam atque reiciendis maiores rem. Sed rem, non aliquid,
-                dolore, molestias excepturi deleniti minima provident laudantium
-                nesciunt veniam. Reiciendis iure facere amet, autem distinctio
-                alias.
+                <span class="text-bold">Clearing Object References: </span>
+                It can be used to clear the reference to an object, allowing it
+                to be garbage collected. This can be useful to release memory
+                and resources when an object is no longer needed.
+              </p>
+              <h3 class="text-xl">undefined :</h3>
+              <p>
+                <span class="text-bold">Intentional Absence of Value :</span>
+                undefined is often the default value for variables and object
+                properties when they are declared but not assigned a value. It
+                indicates that a variable or property has been declared but has
+                not been given a value.
+              </p>
+              <p>
+                <span class="text-bold">Function Return Values: </span>
+                Functions that do not return an explicit value will return
+                undefined. This can be useful in control flow or when you want
+                to indicate that a function didn't produce a meaningful result.
+              </p>
+              <p>
+                <span class="text-bold">Nonexistent Object Properties: </span>
+                Accessing an object property that doesn't exist will return
+                undefined. This can be used to check whether a property exists
+                in an object.
+              </p>
+              <p>
+                <span class="text-bold">Function Arguments: </span>
+                If a function is called with fewer arguments than expected, the
+                missing arguments are assigned the value undefined. This can be
+                used to check the presence of optional arguments.
               </p>
             </div>
           </article>
 
           <!-- third Article  -->
-          <article>
-            <h2 class="text-3xl font-bold">
-              What is i know about JavaScript Variable (var, let, Const)
-            </h2>
+          <article class="mb-16">
+            <h2 class="text-3xl font-bold">What do you mean by REST API?</h2>
             <div id="author" class="mt-4">
               <div class="flex gap-4">
                 <div>
@@ -274,37 +301,14 @@
             </div>
             <div class="my-4 space-y-4">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-                assumenda tempore cum illo aliquam sint numquam eligendi odit
-                inventore est, dignissimos exercitationem facilis nemo repellat
-                quaerat! Odio quisquam quo totam.
-              </p>
-              <h3 class="text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Delectus molestiae officiis iste quae! Debitis totam aut,
-                accusantium labore praesentium cumque nihil vel corrupti dolor
-                vitae saepe soluta iure cupiditate nesciunt eligendi! Quia iste
-                quos inventore cum dolorum, deserunt rerum hic ab! Quos autem
-                suscipit incidunt.
-              </p>
-              <h3 class="text-xl">Lorem ipsum dolor sit amet consectetur.</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Pariatur dolore fugiat, quia necessitatibus sapiente qui. Odit
-                blanditiis eos ipsam ex error, incidunt magni commodi eum nisi
-                maxime vel sequi provident modi assumenda placeat porro sint
-                facere ea suscipit dignissimos, nostrum atque velit, soluta
-                perferendis? Numquam ratione quos, sapiente possimus ducimus
-                quidem id quis tenetur optio? Rerum, quam tenetur expedita totam
-                praesentium, incidunt quaerat debitis quidem impedit nobis
-                consectetur nihil dolorum autem dicta omnis. Rerum repellat
-                veniam atque reiciendis maiores rem. Sed rem, non aliquid,
-                dolore, molestias excepturi deleniti minima provident laudantium
-                nesciunt veniam. Reiciendis iure facere amet, autem distinctio
-                alias.
+                REST API, which stands for Representational State Transfer
+                Application Programming Interface, is a set of architectural
+                principles and constraints for designing and interacting with
+                web services. It's a widely used approach for building web-based
+                APIs that allow different software applications to communicate
+                with each other over the internet or within a network. REST is
+                not a technology or a protocol itself; it's a design style that
+                leverages the existing HTTP protocol for communication.
               </p>
             </div>
           </article>
