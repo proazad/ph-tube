@@ -145,19 +145,20 @@
                 <span class="font-bold">@2 Hoisting: </span>
                 Variables declared with var are hoisted to the top of their
                 containing function or the global scope. This means that you can
-                access and use a var variable before it's declared, although its
-                value will be undefined
+                access and use a var variable before it's declared.
               </p>
               <p>
                 <span class="font-bold">@3 Re-declaration:</span>
-                Variables declared with var are hoisted to the top of their
-                containing function or the global scope. This means that you can
-                access and use a var variable before it's declared, although its
-                value will be undefined
+                If you once declare a variable with var keyword again you can
+                redecaler a variable with the same name variable.
+              </p>
+              <p>
+                <span class="font-bold">@4 Re-Assain:</span>
+                Yes You can re-assain value of a variable with var.
               </p>
               <h3 class="text-2xl" id="let">let:</h3>
               <p>
-                <span class="font-bold">@1 Funciton Scoped :</span>
+                <span class="font-bold">@1 Block Scoped :</span>
                 Variables declared with let are block-scoped. This means they
                 are accessible only within the block (enclosed by curly braces)
                 in which they are declared, including loops, conditional
@@ -165,13 +166,17 @@
               </p>
               <p>
                 <span class="font-bold">@2 Hoisting: </span>
-                Like var, let variables are hoisted, but they are not
-                initialized with a value. Accessing a let variable before its
-                declaration will result in a ReferenceError.
+                Accessing a let variable before its declaration will result in a
+                ReferenceError.
               </p>
               <p>
                 <span class="font-bold">@3 No Re-declaration:</span>
                 You cannot re-declare a variable with let within the same scope.
+                You
+              </p>
+              <p>
+                <span class="font-bold">@4 Re-Assain:</span>
+                You re-assain value of a variable with let.
               </p>
               <h3 class="text-2xl" id="const">Const:</h3>
               <p>
@@ -181,9 +186,8 @@
               </p>
               <p>
                 <span class="font-bold">@2 Hoisting: </span>
-                const variables are also hoisted but not initialized with a
-                value. Trying to access a const variable before its declaration
-                will result in a ReferenceError.
+                Trying to access a const variable before its declaration will
+                result in a ReferenceError.
               </p>
               <p>
                 <span class="font-bold">@3 No Re-declaration:</span>
@@ -229,7 +233,7 @@
                 are often used in different situations. Here are their common
                 use cases:
               </p>
-              <h3 class="text-xl">null</h3>
+              <h3 class="text-xl font-bold">null :</h3>
               <p>
                 <span class="text-bold">Intentional Absence of Value :</span>
                 null is used to represent the intentional absence of any object
@@ -243,7 +247,7 @@
                 to be garbage collected. This can be useful to release memory
                 and resources when an object is no longer needed.
               </p>
-              <h3 class="text-xl">undefined :</h3>
+              <h3 class="text-xl font-bold">undefined :</h3>
               <p>
                 <span class="text-bold">Intentional Absence of Value :</span>
                 undefined is often the default value for variables and object
@@ -306,9 +310,7 @@
                 principles and constraints for designing and interacting with
                 web services. It's a widely used approach for building web-based
                 APIs that allow different software applications to communicate
-                with each other over the internet or within a network. REST is
-                not a technology or a protocol itself; it's a design style that
-                leverages the existing HTTP protocol for communication.
+                with each other over the internet or within a network.
               </p>
             </div>
           </article>
